@@ -24,7 +24,7 @@
     color: white;
   }
   img{
-    width: 600px;
+    width: 40%;
   }
 }
 </style>
