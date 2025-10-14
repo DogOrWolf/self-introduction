@@ -13,18 +13,21 @@
 </style>
 <style scoped>
 .container{
+  height: 100vh;
   width: 100%;
   background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   h1{
     color: white;
+    margin: 40px 0 20px 0;
+    padding-left: 24px;
   }
   img{
-    width: 40%;
+    width: 60%;
   }
 }
 </style>
