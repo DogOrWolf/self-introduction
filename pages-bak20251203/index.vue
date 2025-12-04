@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <xw-header></xw-header>
     <main>
       <header>
         xxx
@@ -8,6 +9,7 @@
         xxx2
       </section>
     </main>
+    <xw-footer></xw-footer>
   </div>
 </template>
 

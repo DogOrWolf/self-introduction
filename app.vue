@@ -1,37 +1,36 @@
 <template>
   <div>
-<!--    <h1>根组件</h1>-->
-<!--    <div class="link">-->
-<!--      <nuxt-link to="/">首页</nuxt-link>-->
-<!--      <nuxt-link to="/users">用户-列表</nuxt-link>-->
-<!--      <nuxt-link to="/users/create-or-edit">用户-添加或更新</nuxt-link>-->
-<!--      <nuxt-link to="/roles/admin">角色-管理员</nuxt-link>-->
-<!--      <nuxt-link to="/roles/normal">角色-普通用户</nuxt-link>-->
-<!--      <nuxt-link to="/about">关于</nuxt-link>-->
-<!--      <a href="/about">关于-原始a标签</a>-->
-
-<!--      <nuxt-link to="/course/879">课程</nuxt-link>-->
-<!--    </div>-->
-
+    <xw-header></xw-header>
     <nuxt-page></nuxt-page>
-    <!--    <NuxtRouteAnnouncer />-->
-    <!--    <NuxtWelcome />-->
+    <xw-footer></xw-footer>
   </div>
 </template>
 
 <script setup lang="ts">
+import XwHeader from "~/components/xw-header.vue";
 </script>
 
-<style lang="scss" scoped>
-.link {
-  margin-bottom: 20px;
-
-  a {
-    margin-right: 10px;
-  }
+<style lang="scss">
+html{
+  font-size: 100px;
 }
 
-html,body{
-  background-color: black;
+body{
+  font-size: 16px;
+  margin: 0;
+  min-height: 100vh;
+  min-width: 1264px;
+  /* 标准属性（现代浏览器） */
+  user-select: none;
+  /* webkit 内核浏览器（Chrome、Safari、Edge） */
+  -webkit-user-select: none;
+  /* Firefox */
+  -moz-user-select: none;
+  /* IE10+ / Edge 旧版 */
+  -ms-user-select: none;
+  /* 可选：禁止长按弹出复制菜单（移动端） */
+  -webkit-touch-callout: none;
+
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 </style>
