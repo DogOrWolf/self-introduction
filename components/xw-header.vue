@@ -39,10 +39,19 @@ const handleSelect = (key) => {
     router.push({path: '/blog'})
   }
 }
-
 const toHome = () => {
   router.push({path: '/home'})
 }
+
+onBeforeRouteUpdate((to, from) => {
+  console.log('路由跳转完成：', to.path);
+  if ( to.path === "/home") {
+    activeIndex.value = "1"
+  }
+  if ( to.path === "/blog") {
+    activeIndex.value = "2"
+  }
+});
 </script>
 
 <style lang="scss" scoped>

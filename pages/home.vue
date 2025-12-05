@@ -5,9 +5,12 @@
           v-model="searchKey"
           class="responsive-input"
           placeholder="请输入项目名称"
-          :suffix-icon="Search"
           size="large"
-      />
+      >
+        <template #suffix>
+          <el-icon class="el-input__icon" @click="search"><Search /></el-icon>
+        </template>
+      </el-input>
     </header>
     <section class="search-options">
       <div v-for="item in searchOptions" class="search-options-row">
@@ -15,7 +18,8 @@
           <span>{{ item.name }}:</span>
         </div>
         <div class="search-options-row-itms">
-          <span v-for="itm in item.options">{{ itm }}</span>
+          <span v-for="itm in item.options" @click="optionClick(itm)"
+                :class="{'active': searchKeys.options.indexOf(itm) != -1}">{{ itm }}</span>
         </div>
       </div>
       <span class="reset" @click="reset">重置筛选</span>
@@ -24,10 +28,12 @@
       <div class="head">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item>全部结果</el-breadcrumb-item>
-          <el-breadcrumb-item>{{ selectType }}</el-breadcrumb-item>
+          <el-breadcrumb-item>
+            <span class="head-item">{{ selectType }}</span>
+          </el-breadcrumb-item>
         </el-breadcrumb>
       </div>
-      <div class="result">
+      <div class="result" v-loading="loading">
         <div class="project" v-for="item in projects" :key="item.id">
           <el-image
               class="image"
@@ -47,6 +53,9 @@
             <span class="button">详情</span>
           </div>
         </div>
+      </div>
+      <div class="pagination">
+        <el-pagination layout="prev, pager, next" :total="projects.length" background size="small" />
       </div>
       <div class="types">
         <span v-for="item in types" @click="changeType(item)">{{ item }}</span>
@@ -69,9 +78,9 @@ const searchOptions = [
     options: ["vue2", "vue3", "angular", "uniapp", "react", "echarts", "nuxt", "java", "spring mvc", "mybatis"]
   }
 ]
-const types = ["前端项目", "后端项目"]
-const selectType = ref("")
-const projects = [
+const types = ["研发项目", "源码项目"]
+const selectType = ref("研发项目")
+const projectsInit = [
   {
     id: 1,
     name: "体育考试系统管理平台",
@@ -124,19 +133,43 @@ const projects = [
   {
     id: 8,
     name: "壳牌化工会议邀请函",
-    tips: "xxxxx",
+    tips: "壳牌化工行业峰会，共探产业链协同新机遇！",
     type: 3, //1管理平台 2网站 3小程序
     image: "/projects/8/1.png"
   },
 ]
+let projects = []
+const searchKeys = reactive({
+  type: "前端项目",
+  options: [] as string[]
+})
 
+/*************筛选框部分****************/
+const optionClick = (option: string) => {
+  if (!searchKeys.options.includes(option)) {
+    searchKeys.options.push(option)
+  } else {
+    const index = searchKeys.options.indexOf(option);
+    if (index > -1) {
+      searchKeys.options.splice(index, 1);
+    }
+  }
+  search();
+}
 const changeType = (type: string) => {
   selectType.value = type;
+  search();
 }
 const reset = () => {
   selectType.value = "";
+  searchKeys.options = [];
+  searchKey.value = "";
+  search();
 }
 
+
+/*************列表部分****************/
+const loading = ref(false)
 const getPreviewList = (item: any) => {
   let obj: Record<number, string[]> = {
     1: [
@@ -193,7 +226,25 @@ const getPreviewList = (item: any) => {
   }
   return obj[item.id] ? obj[item.id] : [item.image]
 }
+const search = () => {
+  loading.value = true;
+  setTimeout(()=>{
+    if(searchKey.value == "" || searchKey.value.trim() == ""){
+      projects = projectsInit
+    }else {
+      projects = projectsInit.filter((item)=>{
+        return item.name?.includes(searchKey.value) || item.tips?.includes(searchKey.value)
+      })
+    }
+    loading.value = false;
+  },600)
+}
 
+
+/*************启动项****************/
+onMounted(() => {
+  search();
+})
 
 </script>
 
@@ -223,6 +274,10 @@ const getPreviewList = (item: any) => {
 
     :deep(.el-input--large) {
       height: .38rem;
+    }
+
+    :deep(.el-input__suffix) {
+      cursor: pointer;
     }
   }
 
@@ -257,6 +312,10 @@ const getPreviewList = (item: any) => {
             color: coral;
           }
         }
+
+        .active {
+          color: coral;
+        }
       }
     }
 
@@ -279,6 +338,10 @@ const getPreviewList = (item: any) => {
 
     .head {
       padding: .2rem 0;
+
+      .head-item{
+        color: coral;
+      }
     }
 
     .result {
@@ -357,6 +420,13 @@ const getPreviewList = (item: any) => {
 
 
       }
+    }
+
+    .pagination{
+      height: .4rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
     }
 
     .types {

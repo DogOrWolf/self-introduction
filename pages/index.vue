@@ -1,27 +1,12 @@
 <template>
-  <div class="container">
-    <main>
-      <header>
-        xxx
-      </header>
-      <section>
-        xxx2
-      </section>
-    </main>
-  </div>
+
 </template>
 
 <script setup lang="ts">
-import XwHeader from "~/components/xw-header.vue";
+const route = useRouter()
+route.push("/home")
 </script>
 
 <style scoped>
-.container {
-  main{
-    background-color: #f2f3f5;
-    height: 120vh ;
-  }
-
-}
 </style>
 
