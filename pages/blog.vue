@@ -23,7 +23,7 @@
         </div>
       </div>
       <el-divider/>
-      <div class="articles">
+      <div class="articles" v-loading="loading">
         <div v-for="item in articles" class="content">
           <div class="article">
             <div class="left" v-if="item.img && item.img != ''">
@@ -69,12 +69,9 @@ const optionClick = (option: string) => {
   search();
 }
 
-const search = () => {
-}
-
 
 /*************文章部分****************/
-const articles = [
+const articlesInit = [
   {
     title: "Vue2学习",
     img: "/article/vue2/img.png",
@@ -96,7 +93,7 @@ const articles = [
   }, {
     title: "VUE3学习",
     img: "/article/vue3/img.png",
-    introduce: "angular学习笔记1.基本概览模块 Module组件 Component指令 Directive服务 Service路由 Router2. 模块Module2.1 模块的含义2.1.1 declarations2.1.2 imports2.1.3  providers2.1.4  bootstrap2.1.5  exports2.1.6  entryComponents3.组件3.1 组件的含义3.1.1 装饰器-元数据3.1.2  模板3.",
+    introduce: "VCA 组合式api  VOA选项式api 跨级通信 provide inject $parent $root 动态组件 异步组件 插槽 pinia Vite nuxt.js vue3拦截 proxy拦截.",
     time: "2024.8.16",
     read: "419",
   }, {
@@ -107,6 +104,28 @@ const articles = [
     read: "268",
   }
 ]
+let articles = []
+
+const loading = ref(false)
+const search = () => {
+  loading.value = true;
+  setTimeout(()=>{
+    if(searchKey.value == "" || searchKey.value.trim() == ""){
+      articles = articlesInit
+    }else {
+      articles = articlesInit.filter((item)=>{
+        return item.title?.toLowerCase().includes(searchKey.value.toLowerCase()) || item.introduce?.toLowerCase().includes(searchKey.value.toLowerCase())
+      })
+    }
+    loading.value = false;
+  },600)
+}
+
+/*************启动项****************/
+onMounted(() => {
+  search();
+})
+
 </script>
 
 <style lang="scss" scoped>
