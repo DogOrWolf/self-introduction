@@ -1,6 +1,6 @@
 <template lang="html">
   <!-- header start-->
-  <nav class="header">
+  <nav class="header" :class="{'hidden':isHidden}">
     <div class="logo" @click="toHome">
       <img src="../assets/logo.jpg" alt=""/>
       <span>小猫爱钓鱼</span>
@@ -19,7 +19,7 @@
       </el-menu>
     </div>
     <div class="header-right">
-      xxx
+      游客
     </div>
   </nav>
   <!-- header end-->
@@ -27,6 +27,7 @@
 
 <script setup>
 import {onBeforeRouteUpdate} from 'nuxt/app';
+
 const activeIndex = ref('1')
 const router = useRouter()
 
@@ -43,15 +44,44 @@ const toHome = () => {
   router.push({path: '/home'})
 }
 
+const isHidden = ref(false);
+const handleScroll = () => {
+  // 页面滚动距顶部距离
+  let scrollTop =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+
+  let scrollTopChange = 120
+  if (document.getElementsByTagName('html')[0].className === 'mobile') {
+    //mobile
+    scrollTopChange = 30
+  }
+
+  // 在顶部时，需要去掉fixed
+  if (scrollTop <= scrollTopChange) {
+    isHidden.value = false;
+    return;
+  }
+  if (scrollTop > scrollTopChange) {
+    isHidden.value = true;
+  }
+}
+
 onBeforeRouteUpdate((to, from) => {
   console.log('路由跳转完成：', to.path);
-  if ( to.path === "/home") {
+  if (to.path === "/home") {
     activeIndex.value = "1"
   }
-  if ( to.path === "/blog") {
+  if (to.path === "/blog") {
     activeIndex.value = "2"
   }
 });
+
+onBeforeMount(() => {
+  window.addEventListener("scroll",handleScroll, true);
+});
+
 </script>
 
 <style lang="scss" scoped>
@@ -67,6 +97,7 @@ onBeforeRouteUpdate((to, from) => {
   background: #FEFEFE;
   color: rgba(26, 26, 26, 0.60);
   font-weight: 500;
+  transition: transform .15s ease-in-out;
 
   .logo {
     display: flex;
@@ -99,6 +130,11 @@ onBeforeRouteUpdate((to, from) => {
   .header-right {
     display: flex;
     align-items: center;
+    font-size: 14px;
   }
+}
+
+.hidden{
+  transform: translateY(-.64rem);
 }
 </style>

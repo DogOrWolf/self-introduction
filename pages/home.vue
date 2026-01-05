@@ -49,7 +49,7 @@
           />
           <span class="name">{{ item.name }}</span>
           <span class="tips">{{ item.tips }}</span>
-          <div class="btn">
+          <div class="btn" @click="toProject(item)">
             <span class="button">详情</span>
           </div>
         </div>
@@ -143,6 +143,7 @@ const searchKeys = reactive({
   type: "前端项目",
   options: [] as string[]
 })
+const router = useRouter()
 
 /*************筛选框部分****************/
 const optionClick = (option: string) => {
@@ -239,7 +240,15 @@ const search = () => {
     loading.value = false;
   },600)
 }
-
+const toProject = (item: any) => {
+  console.log(item)
+  router.push({
+    path: '/project',
+    query:{
+      project:JSON.stringify(item)
+    }
+  })
+}
 
 /*************启动项****************/
 onMounted(() => {
