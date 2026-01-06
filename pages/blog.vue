@@ -24,7 +24,7 @@
       </div>
       <el-divider/>
       <div class="articles" v-loading="loading">
-        <div v-for="item in articles" class="content">
+        <div v-for="item in articles" class="content" @click="toBlogPage(item)">
           <div class="article">
             <div class="left" v-if="item.img && item.img != ''">
               <img :src="item.img" alt="">
@@ -121,6 +121,16 @@ const search = () => {
   },600)
 }
 
+const router = useRouter()
+const toBlogPage = (item: any) => {
+  console.log(item)
+  router.push({
+    path: '/blogPage',
+    query:{
+      project:JSON.stringify(item)
+    }
+  })
+}
 /*************启动项****************/
 onMounted(() => {
   search();
