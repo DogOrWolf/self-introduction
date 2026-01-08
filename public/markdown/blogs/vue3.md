@@ -40,9 +40,6 @@ https://blog.csdn.net/pagnzong/article/details/120389514
 https://www.zhihu.com/question/598649399/answer/3045579662
 ```
 
-![image-20231212145153850](C:\Users\1\AppData\Roaming\Typora\typora-user-images\image-20231212145153850.png)
-
-
 
 ## 2.知识点
 
