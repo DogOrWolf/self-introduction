@@ -174,7 +174,13 @@ const loading = ref(false)
 const getPreviewList = (item: any) => {
   let obj: Record<number, string[]> = {
     1: [
-      "/projects/1/1.png"
+      "/projects/1/1.png",
+      "/projects/1/2.png",
+      "/projects/1/3.png",
+      "/projects/1/4.png",
+      "/projects/1/5.png",
+      "/projects/1/6.png",
+      "/projects/1/7.png",
     ],
     2: [
       "/projects/2/1.png",

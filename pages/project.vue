@@ -134,7 +134,13 @@ project.value = JSON.parse(route.query?.project || {});
 const getPreviewList = (item: any) => {
   let obj: Record<number, string[]> = {
     1: [
-      "/projects/1/1.png"
+      "/projects/1/1.png",
+      "/projects/1/2.png",
+      "/projects/1/3.png",
+      "/projects/1/4.png",
+      "/projects/1/5.png",
+      "/projects/1/6.png",
+      "/projects/1/7.png",
     ],
     2: [
       "/projects/2/1.png",
@@ -209,14 +215,14 @@ const loadPublicMdFile = async (path:string, toContent:any) => {
     toContent.value = await response.text()
   } catch (error) {
     console.error('加载public文件失败：', error)
-    toContent.value = `### 加载失败\n\n无法读取文件：${(error as Error).message}`
+    toContent.value = `#### 待更新`
   }
 }
 
 /*************启动项****************/
 onMounted(() => {
-  loadPublicMdFile("/markdown/projects/1.md",guideContent)
-  loadPublicMdFile("/markdown/projects/2.md",detailContent)
+  loadPublicMdFile(`/markdown/projects/${project.value.id}-1.md`,guideContent)
+  loadPublicMdFile(`/markdown/projects/${project.value.id}-2.md`,detailContent)
 })
 
 </script>
@@ -365,6 +371,10 @@ onMounted(() => {
               font-weight: 900;
             }
           }
+
+          &-content{
+            width: 8rem;
+          }
         }
 
         .detail{
@@ -387,6 +397,10 @@ onMounted(() => {
               font-size: .14rem;
               font-weight: 900;
             }
+          }
+
+          &-content{
+            width: 8rem;
           }
         }
       }
