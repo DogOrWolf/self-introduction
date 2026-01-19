@@ -66,6 +66,7 @@
 
 <script setup lang="ts">
 import {Search} from '@element-plus/icons-vue'
+import {aesEncrypt} from "~/utils/encrypt";
 
 const searchKey = ref('')
 const searchOptions = [
@@ -251,7 +252,7 @@ const toProject = (item: any) => {
   router.push({
     path: '/project',
     query:{
-      project:JSON.stringify(item)
+      project:aesEncrypt(item)
     }
   })
 }

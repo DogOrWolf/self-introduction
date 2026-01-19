@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@kangc/v-md-editor": "^2.3.18",
+    "crypto-js": "^4.2.0",
     "md-editor-v3": "^6.3.1",
     "nuxt": "^3.19.2",
     "sass": "^1.67.0",

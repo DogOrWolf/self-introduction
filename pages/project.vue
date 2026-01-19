@@ -119,6 +119,8 @@
 </template>
 
 <script setup lang="ts">
+import {aesDecrypt} from "~/utils/encrypt";
+
 const route = useRoute();
 console.log(route)
 interface Project {
@@ -130,7 +132,7 @@ interface Project {
 }
 const project = ref<Project>(null);
 const projectImages = ref([]);
-project.value = JSON.parse(route.query?.project || {});
+project.value = aesDecrypt(route.query?.project || "");
 const getPreviewList = (item: any) => {
   let obj: Record<number, string[]> = {
     1: [

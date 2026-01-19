@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import {MdPreview} from 'md-editor-v3';
 import 'md-editor-v3/lib/preview.css';
+import {aesDecrypt} from "~/utils/encrypt";
 
 const loading = ref(true)
 const blogContent = ref("");
@@ -41,7 +42,7 @@ interface Article {
   url: string
 }
 const article = ref<Article>(null);
-article.value = JSON.parse(route.query?.article || {});
+article.value = aesDecrypt(route.query?.article || "");
 onMounted(() => {
   loadPublicMdFile(article.value.url,blogContent)
 })

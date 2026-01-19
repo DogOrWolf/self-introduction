@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 import {Search} from "@element-plus/icons-vue";
+import {aesEncrypt} from "~/utils/encrypt";
 
 const classifies = ["全部", "前端开发", "后端开发", "VUE3", "NUXT3", "Spring MVC"]
 const searchKey = ref('')
@@ -73,13 +74,27 @@ const optionClick = (option: string) => {
 /*************文章部分****************/
 const articlesInit = [
   {
+    title: "VUE3学习",
+    img: "/article/vue3/img.png",
+    introduce: "VCA 组合式api  VOA选项式api 跨级通信 provide inject $parent $root 动态组件 异步组件 插槽 pinia Vite nuxt.js vue3拦截 proxy拦截...",
+    time: "2024.8.16",
+    read: "419",
+    url:"/markdown/blogs/vue3.md"
+  }, {
     title: "Vue2学习",
     img: "/article/vue2/img.png",
-    introduce: "Vue学习笔记1.基本概览2.基本介绍2.1 简介2.2 特点2.3 vue官网tips3.基本使用3.1 简单实例3.2 模板3.3 Vue实例 el与data4.核心概念4.1 数据绑定 v-bind  v-model4.2 MVVM4.3计算属性 computed4.4 监视属性 watch4.5 样式绑定  :class   :style4.6 @表示的含义5.vue原理5.1 数据代理 defineProperty",
+    introduce: "Vue学习笔记1.基本概览2.基本介绍2.1 简介2.2 特点2.3 vue官网tips3.基本使用3.1 简单实例3.2 模板3.3 Vue实例 el与data4.核心概念4.1 数据绑定 v-bind  v-model4.2 MVVM4.3计算属性 computed4.4 监视属性 watch4.5 样式绑定  :class   :style4.6 @表示的含义5.vue原理5.1 数据代理 defineProperty...",
     time: "2022.1.26",
     read: "297",
     url:"/markdown/blogs/vue2.md"
   }, {
+    title: "Pinia VS Vuex",
+    img: "/article/piniavsvuex/img.jpeg",
+    introduce: "Pinia&Vuex知识点 对比总结 知识点 Pinia Vuex 命名空间 Pinia VS Vuex .状态管理 VS 全局变量  state getters actions VS state getters mutations actions module...",
+    time: "2025.03.21",
+    read: "873",
+    url:"/markdown/blogs/PiniaVSVuex.md"
+  },{
     title: "ES6-11学习",
     img: "/article/ecma6/img.png",
     introduce: "ES6学习笔记(6-11)1.ECMA介绍2.ES6新特性2.1  let2.2  const2.3  模板字符串2.4  rest参数   …args2.5  箭头函数   ()=>{ }2.6  扩展运算符  […array]2.7  Promise2.8  集合  Set、Map2.9  class 类2.10  模块化2.11  数值扩展2.12  对象扩展2.13 其他2.13.1 对象简化写法2.13.2 变量结构赋值2.13.3 Symbol.",
@@ -93,13 +108,6 @@ const articlesInit = [
     time: "2023.2.04",
     read: "323",
     url:"/markdown/blogs/angular.md"
-  }, {
-    title: "VUE3学习",
-    img: "/article/vue3/img.png",
-    introduce: "VCA 组合式api  VOA选项式api 跨级通信 provide inject $parent $root 动态组件 异步组件 插槽 pinia Vite nuxt.js vue3拦截 proxy拦截.",
-    time: "2024.8.16",
-    read: "419",
-    url:"/markdown/blogs/vue3.md"
   }, {
     title: "Promise学习",
     img: "/article/promise/img.png",
@@ -132,7 +140,7 @@ const toBlogPage = (item: any) => {
   router.push({
     path: '/blogPage',
     query:{
-      article:JSON.stringify(item)
+      article:aesEncrypt(item)
     }
   })
 }
