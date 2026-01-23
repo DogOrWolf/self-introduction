@@ -594,10 +594,12 @@ onMounted(() => {
             border-radius: 5px;
             background-color: white;
             display: flex;
+            box-sizing: border-box;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             margin-bottom: .1rem;
+            padding: 0.16rem 0.16rem 0.2rem 0.16rem;
 
             &-header{
               display: flex;
@@ -640,9 +642,10 @@ onMounted(() => {
           }
 
           .guide {
-            width: 94%;
+            width: 100%;
             min-height: 4rem;
             padding: .16rem .16rem .2rem .16rem;
+            box-sizing: border-box;
             border-radius: 5px;
             background-color: white;
             display: flex;
@@ -672,9 +675,10 @@ onMounted(() => {
           }
 
           .detail{
-            width: 94%;
+            width: 100%;
             min-height: 4rem;
             padding: .16rem .16rem .2rem .16rem;
+            box-sizing: border-box;
             border-radius: 5px;
             background-color: white;
 
