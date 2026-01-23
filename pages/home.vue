@@ -76,7 +76,7 @@ const searchOptions = [
   },
   {
     name: "技术栈",
-    options: ["vue2", "vue3", "angular", "uniapp", "react", "echarts", "nuxt", "java", "spring mvc", "mybatis"]
+    options: ["vue2", "vue3", "angular", "uniapp", "react", "echarts", "nuxt", "java", "mvc", "mybatis"]
   }
 ]
 const types = ["研发项目", "源码项目"]
@@ -265,213 +265,428 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f2f3f5;
-  min-height: 100vh;
-  padding-bottom: 1.8rem;
+.pc{
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f3f5;
+    min-height: 100vh;
+    padding-bottom: 1.8rem;
 
-  .search-key {
-    width: 4.8rem;
-    margin: .4rem;
+    .search-key {
+      width: 4.8rem;
+      margin: .4rem;
 
-    :deep(.el-input__wrapper) {
-      border: 1px solid #64d2ff;
-      border-radius: .24rem;
-      box-shadow: none;
+      :deep(.el-input__wrapper) {
+        border: 1px solid #64d2ff;
+        border-radius: .24rem;
+        box-shadow: none;
 
-      ::placeholder {
-        font-size: 12px;
-        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+        ::placeholder {
+          font-size: 12px;
+          font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+        }
+      }
+
+      :deep(.el-input--large) {
+        height: .38rem;
+      }
+
+      :deep(.el-input__suffix) {
+        cursor: pointer;
       }
     }
 
-    :deep(.el-input--large) {
-      height: .38rem;
-    }
+    .search-options {
+      width: 8.3rem;
+      padding: .12rem .1rem;
+      background-color: white;
+      border-radius: 5px 5px 5px 5px;
+      box-shadow: 8px 14px 20px 6px rgba(39, 44, 49, .06), 1px 3px 8px 6px rgba(39, 44, 49, .03);
+      position: relative;
 
-    :deep(.el-input__suffix) {
-      cursor: pointer;
-    }
-  }
-
-  .search-options {
-    width: 8.3rem;
-    padding: .12rem .1rem;
-    background-color: white;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 8px 14px 20px 6px rgba(39, 44, 49, .06), 1px 3px 8px 6px rgba(39, 44, 49, .03);
-    position: relative;
-
-    &-row {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      font-size: 12px;
-      margin: .08rem 0;
-
-      &-title {
-        padding-right: .1rem;
-      }
-
-      &-itms {
+      &-row {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        font-size: 12px;
+        margin: .08rem 0;
 
-        span {
-          cursor: pointer;
-          padding-right: .16rem;
+        &-title {
+          padding-right: .1rem;
+        }
 
-          &:hover {
+        &-itms {
+          display: flex;
+          align-items: center;
+
+          span {
+            cursor: pointer;
+            padding-right: .16rem;
+
+            &:hover {
+              color: coral;
+            }
+          }
+
+          .active {
             color: coral;
           }
         }
-
-        .active {
-          color: coral;
-        }
       }
-    }
 
-    .reset {
-      position: absolute;
-      right: 0.2rem;
-      bottom: 0.2rem;
-      font-size: 12px;
-      cursor: pointer;
-
-      &:hover {
-        color: crimson;
-      }
-    }
-  }
-
-  .project-items {
-    width: 8.3rem;
-    position: relative;
-
-    .head {
-      padding: .2rem 0;
-
-      .head-item{
-        color: coral;
-      }
-    }
-
-    .result {
-      width: 8.3rem;
-      display: grid;
-      align-items: center;
-      grid-template-columns: repeat(auto-fill, 1.5rem);
-      justify-content: space-between;
-      gap: .2rem;
-
-      .project {
-        width: 1.5rem;
-        height: 2.44rem;
-        background-color: white;
-        border-radius: .04rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        box-shadow: 8px 14px 20px 6px rgba(39, 44, 49, .06), 1px 3px 8px 6px rgba(39, 44, 49, .03);
-        transition: all .3s linear;
-
-        .image {
-          width: 1.5rem;
-          height: 1.2rem;
-        }
-
-        .name {
-          color: #34495e;
-          font-size: 13px;
-          font-weight: 900;
-          padding: 8px;
-          text-align: center;
-          font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
-        }
-
-        .tips {
-          font-size: 10px;
-          padding: 2px 4px;
-          text-align: left;
-          text-indent: 1em;
-          color: #888;
-
-        }
-
-        .btn {
-          width: 100%;
-          position: absolute;
-          bottom: .1rem;
-
-          .button {
-            background: #64d2ff;
-            border: none;
-            border-radius: 7px;
-            box-shadow: 0 6px 14px rgba(30, 128, 255, .25);
-            color: #fff;
-            cursor: pointer;
-            display: flex;
-            font-size: 12px;
-            justify-content: center;
-            line-height: 1;
-            margin: 0 auto;
-            padding: 8px 14px;
-            transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-            user-select: none;
-            white-space: nowrap;
-            width: 1rem;
-
-            &:hover {
-              background: #64d2ff;
-              box-shadow: 0 10px 20px rgba(30, 128, 255, .3);
-              transform: translateY(-1px);
-            }
-          }
-        }
-
-
-      }
-    }
-
-    .pagination{
-      height: .4rem;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .types {
-      position: absolute;
-      left: -1.4rem;
-      top: .1rem;
-
-      width: .8rem;
-      height: 3rem;
-      background-color: white;
-      border-radius: .1rem;
-      display: flex;
-      flex-direction: column;
-      padding: .14rem .1rem .2rem .1rem;
-      align-items: center;
-
-      span {
+      .reset {
+        position: absolute;
+        right: 0.2rem;
+        bottom: 0.2rem;
         font-size: 12px;
-        padding: .08rem 0;
         cursor: pointer;
 
         &:hover {
-          color: cornflowerblue;
+          color: crimson;
+        }
+      }
+    }
+
+    .project-items {
+      width: 8.3rem;
+      position: relative;
+
+      .head {
+        padding: .2rem 0;
+
+        .head-item{
+          color: coral;
         }
       }
 
+      .result {
+        width: 8.3rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(auto-fill, 1.5rem);
+        justify-content: space-between;
+        gap: .2rem;
+
+        .project {
+          width: 1.5rem;
+          height: 2.44rem;
+          background-color: white;
+          border-radius: .04rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          box-shadow: 8px 14px 20px 6px rgba(39, 44, 49, .06), 1px 3px 8px 6px rgba(39, 44, 49, .03);
+          transition: all .3s linear;
+
+          .image {
+            width: 1.5rem;
+            height: 1.2rem;
+          }
+
+          .name {
+            color: #34495e;
+            font-size: 13px;
+            font-weight: 900;
+            padding: 8px;
+            text-align: center;
+            font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+          }
+
+          .tips {
+            font-size: 10px;
+            padding: 2px 4px;
+            text-align: left;
+            text-indent: 1em;
+            color: #888;
+
+          }
+
+          .btn {
+            width: 100%;
+            position: absolute;
+            bottom: .1rem;
+
+            .button {
+              background: #64d2ff;
+              border: none;
+              border-radius: 7px;
+              box-shadow: 0 6px 14px rgba(30, 128, 255, .25);
+              color: #fff;
+              cursor: pointer;
+              display: flex;
+              font-size: 12px;
+              justify-content: center;
+              line-height: 1;
+              margin: 0 auto;
+              padding: 8px 14px;
+              transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+              user-select: none;
+              white-space: nowrap;
+              width: 1rem;
+
+              &:hover {
+                background: #64d2ff;
+                box-shadow: 0 10px 20px rgba(30, 128, 255, .3);
+                transform: translateY(-1px);
+              }
+            }
+          }
+
+
+        }
+      }
+
+      .pagination{
+        height: .4rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .types {
+        position: absolute;
+        left: -1.4rem;
+        top: .1rem;
+
+        width: .8rem;
+        height: 3rem;
+        background-color: white;
+        border-radius: .1rem;
+        display: flex;
+        flex-direction: column;
+        padding: .14rem .1rem .2rem .1rem;
+        align-items: center;
+
+        span {
+          font-size: 12px;
+          padding: .08rem 0;
+          cursor: pointer;
+
+          &:hover {
+            color: cornflowerblue;
+          }
+        }
+
+      }
+
+
+    }
+  }
+}
+
+.mobile{
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f3f5;
+    min-height: 100vh;
+    padding-bottom: 1.8rem;
+
+    .search-key {
+      margin: .4rem;
+
+      :deep(.el-input__wrapper) {
+        border: 1px solid #64d2ff;
+        border-radius: .24rem;
+        box-shadow: none;
+
+        ::placeholder {
+          font-size: 12px;
+          font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+        }
+      }
+
+      :deep(.el-input--large) {
+        height: .38rem;
+      }
+
+      :deep(.el-input__suffix) {
+        cursor: pointer;
+      }
     }
 
+    .search-options {
+      width: 3.4rem;
+      padding: .12rem .1rem;
+      background-color: white;
+      border-radius: 5px 5px 5px 5px;
+      box-shadow: 8px 14px 20px 6px rgba(39, 44, 49, .06), 1px 3px 8px 6px rgba(39, 44, 49, .03);
+      position: relative;
 
+      &-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 12px;
+        margin: .08rem 0;
+
+        &-title {
+          padding-right: .1rem;
+        }
+
+        &-itms {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+
+          span {
+            cursor: pointer;
+            padding-right: .06rem;
+
+            &:hover {
+              color: coral;
+            }
+          }
+
+          .active {
+            color: coral;
+          }
+        }
+      }
+
+      .reset {
+        position: absolute;
+        right: 0.2rem;
+        font-size: 12px;
+        cursor: pointer;
+
+        &:hover {
+          color: crimson;
+        }
+      }
+    }
+
+    .project-items {
+      position: relative;
+      width: 90%;
+
+      .head {
+        padding: .2rem 0;
+
+        .head-item{
+          color: coral;
+        }
+      }
+
+      .result {
+        padding: 0 .1rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(auto-fill, 1.5rem);
+        justify-content: space-between;
+        gap: .2rem;
+
+        .project {
+          width: 1.5rem;
+          height: 2.44rem;
+          background-color: white;
+          border-radius: .04rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          box-shadow: 8px 14px 20px 6px rgba(39, 44, 49, .06), 1px 3px 8px 6px rgba(39, 44, 49, .03);
+          transition: all .3s linear;
+
+          .image {
+            width: 1.5rem;
+            height: 1.2rem;
+          }
+
+          .name {
+            color: #34495e;
+            font-size: 13px;
+            font-weight: 900;
+            padding: 8px;
+            text-align: center;
+            font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+          }
+
+          .tips {
+            font-size: 10px;
+            padding: 2px 4px;
+            text-align: left;
+            text-indent: 1em;
+            color: #888;
+
+          }
+
+          .btn {
+            width: 100%;
+            position: absolute;
+            bottom: .1rem;
+
+            .button {
+              background: #64d2ff;
+              border: none;
+              border-radius: 7px;
+              box-shadow: 0 6px 14px rgba(30, 128, 255, .25);
+              color: #fff;
+              cursor: pointer;
+              display: flex;
+              font-size: 12px;
+              justify-content: center;
+              line-height: 1;
+              margin: 0 auto;
+              padding: 8px 14px;
+              transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+              user-select: none;
+              white-space: nowrap;
+              width: 1rem;
+
+              &:hover {
+                background: #64d2ff;
+                box-shadow: 0 10px 20px rgba(30, 128, 255, .3);
+                transform: translateY(-1px);
+              }
+            }
+          }
+
+
+        }
+      }
+
+      .pagination{
+        height: .4rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .types {
+        display: none !important;
+        position: absolute;
+        left: -1.4rem;
+        top: .1rem;
+
+        width: .8rem;
+        height: 3rem;
+        background-color: white;
+        border-radius: .1rem;
+        display: flex;
+        flex-direction: column;
+        padding: .14rem .1rem .2rem .1rem;
+        align-items: center;
+
+        span {
+          font-size: 12px;
+          padding: .08rem 0;
+          cursor: pointer;
+
+          &:hover {
+            color: cornflowerblue;
+          }
+        }
+
+      }
+
+
+    }
   }
 }
 </style>

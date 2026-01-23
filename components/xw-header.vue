@@ -8,7 +8,7 @@
     <div class="header-center">
       <el-menu
           :default-active="activeIndex"
-          class="el-menu-demo"
+          class="header-center-menu"
           mode="horizontal"
           @select="handleSelect"
           background-color="#fff"
@@ -85,53 +85,118 @@ onBeforeMount(() => {
 </script>
 
 <style lang="scss" scoped>
-.header {
-  height: .64rem;
-  display: flex;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  justify-content: space-between;
-  padding: 0 1.12rem;
-  background: #FEFEFE;
-  color: rgba(26, 26, 26, 0.60);
-  font-weight: 500;
-  transition: transform .15s ease-in-out;
-
-  .logo {
+.pc{
+  .header {
+    height: .64rem;
     display: flex;
     align-items: center;
-    margin-left: .32rem;
-    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    justify-content: space-between;
+    padding: 0 1.12rem;
+    background: #FEFEFE;
+    color: rgba(26, 26, 26, 0.60);
+    font-weight: 500;
+    transition: transform .15s ease-in-out;
 
-    img {
-      width: .48rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-left: .32rem;
+      cursor: pointer;
+
+      img {
+        width: .48rem;
+      }
+
+      span {
+        color: #64d2ff;
+      }
     }
 
-    span {
-      color: #64d2ff;
+    .header-center {
+      flex: 1;
+      padding-left: .4rem;
+
+      .el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+        background-color: #ECF5FF;
+      }
+
+      .el-menu--horizontal.el-menu {
+        border-bottom: 0;
+      }
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
     }
   }
+}
 
-  .header-center {
-    flex: 1;
-    padding-left: .4rem;
-
-    .el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
-      background-color: #ECF5FF;
-    }
-
-    .el-menu--horizontal.el-menu {
-      border-bottom: 0;
-    }
-  }
-
-  .header-right {
+.mobile{
+  .header {
+    font-size: .12rem;
+    height: .54rem;
     display: flex;
     align-items: center;
-    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    justify-content: space-between;
+    padding: 0;
+    background: #FEFEFE;
+    color: rgba(26, 26, 26, 0.60);
+    font-weight: 500;
+    transition: transform .15s ease-in-out;
+
+    .logo {
+      width: .36rem;
+      display: flex;
+      align-items: center;
+      padding: 0 .12rem;
+      margin-left: 0;
+      cursor: pointer;
+
+      img {
+        width: .36rem;
+      }
+
+      span {
+        display: none;
+        color: #64d2ff;
+      }
+    }
+
+    .header-center {
+      flex: 1;
+      padding-left: 0;
+
+      &-menu{
+        height: .5rem;
+        .el-menu-item{
+          padding: .06rem;
+        }
+      }
+      .el-menu--horizontal .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+        background-color: #ECF5FF;
+      }
+
+      .el-menu--horizontal.el-menu {
+        border-bottom: 0;
+      }
+    }
+
+    .header-right {
+      width: .64rem;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
   }
+
 }
 
 .hidden{

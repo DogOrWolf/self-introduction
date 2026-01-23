@@ -19,7 +19,7 @@ body{
   font-size: 16px;
   margin: 0;
   min-height: 100vh;
-  min-width: 1264px;
+  //min-width: 1264px;
   /* 标准属性（现代浏览器） */
   user-select: none;
   /* webkit 内核浏览器（Chrome、Safari、Edge） */

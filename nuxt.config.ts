@@ -5,5 +5,12 @@ export default defineNuxtConfig({
   modules: [
     '@element-plus/nuxt'
   ],
-  elementPlus: { /** Options */ }
+  elementPlus: { /** Options */ },
+  plugins: [
+    {
+      src: '@/plugins/rem.client.ts',
+      ssr: false,
+      order: -10
+    },
+  ],
 })
