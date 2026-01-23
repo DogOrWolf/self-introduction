@@ -79,42 +79,42 @@ const articlesInit = [
     introduce: "VCA 组合式api  VOA选项式api 跨级通信 provide inject $parent $root 动态组件 异步组件 插槽 pinia Vite nuxt.js vue3拦截 proxy拦截...",
     time: "2024.8.16",
     read: "419",
-    url:"/markdown/blogs/vue3.md"
+    url: "/markdown/blogs/vue3.md"
   }, {
     title: "Vue2学习",
     img: "/article/vue2/img.png",
     introduce: "Vue学习笔记1.基本概览2.基本介绍2.1 简介2.2 特点2.3 vue官网tips3.基本使用3.1 简单实例3.2 模板3.3 Vue实例 el与data4.核心概念4.1 数据绑定 v-bind  v-model4.2 MVVM4.3计算属性 computed4.4 监视属性 watch4.5 样式绑定  :class   :style4.6 @表示的含义5.vue原理5.1 数据代理 defineProperty...",
     time: "2022.1.26",
     read: "297",
-    url:"/markdown/blogs/vue2.md"
+    url: "/markdown/blogs/vue2.md"
   }, {
     title: "Pinia VS Vuex",
     img: "/article/piniavsvuex/img.jpeg",
     introduce: "Pinia&Vuex知识点 对比总结 知识点 Pinia Vuex 命名空间 Pinia VS Vuex .状态管理 VS 全局变量  state getters actions VS state getters mutations actions module...",
     time: "2025.03.21",
     read: "873",
-    url:"/markdown/blogs/PiniaVSVuex.md"
-  },{
+    url: "/markdown/blogs/PiniaVSVuex.md"
+  }, {
     title: "ES6-11学习",
     img: "/article/ecma6/img.png",
     introduce: "ES6学习笔记(6-11)1.ECMA介绍2.ES6新特性2.1  let2.2  const2.3  模板字符串2.4  rest参数   …args2.5  箭头函数   ()=>{ }2.6  扩展运算符  […array]2.7  Promise2.8  集合  Set、Map2.9  class 类2.10  模块化2.11  数值扩展2.12  对象扩展2.13 其他2.13.1 对象简化写法2.13.2 变量结构赋值2.13.3 Symbol.",
     time: "2022.6.18",
     read: "125",
-    url:"/markdown/blogs/ES6-11.md"
+    url: "/markdown/blogs/ES6-11.md"
   }, {
     title: "Angular学习",
     img: "/article/angular/img.png",
     introduce: "angular学习笔记1.基本概览模块 Module组件 Component指令 Directive服务 Service路由 Router2. 模块Module2.1 模块的含义2.1.1 declarations2.1.2 imports2.1.3  providers2.1.4  bootstrap2.1.5  exports2.1.6  entryComponents3.组件3.1 组件的含义3.1.1 装饰器-元数据3.1.2  模板3.",
     time: "2023.2.04",
     read: "323",
-    url:"/markdown/blogs/angular.md"
+    url: "/markdown/blogs/angular.md"
   }, {
     title: "Promise学习",
     img: "/article/promise/img.png",
     introduce: "Promise学习笔记1.promise含义2.基本使用3.常用方法API3.1 构造函数3.2 then()3.3 catch()3.4 Promise.resolve()3.5 Promise.reject()3.6 Promise.all()3.7 Promise.race()3.8 例子4. await 与 async4.1 await4.2  async 函数4.3 例子5.关键问题5.1 如何改变 promise 的状态?5.2 一个 pro.",
     time: "2022.5.12",
     read: "268",
-    url:"/markdown/blogs/promise.md"
+    url: "/markdown/blogs/promise.md"
   }
 ]
 let articles = []
@@ -122,16 +122,16 @@ let articles = []
 const loading = ref(false)
 const search = () => {
   loading.value = true;
-  setTimeout(()=>{
-    if(searchKey.value == "" || searchKey.value.trim() == ""){
+  setTimeout(() => {
+    if (searchKey.value == "" || searchKey.value.trim() == "") {
       articles = articlesInit
-    }else {
-      articles = articlesInit.filter((item)=>{
+    } else {
+      articles = articlesInit.filter((item) => {
         return item.title?.toLowerCase().includes(searchKey.value.toLowerCase()) || item.introduce?.toLowerCase().includes(searchKey.value.toLowerCase())
       })
     }
     loading.value = false;
-  },600)
+  }, 600)
 }
 
 const router = useRouter()
@@ -139,8 +139,8 @@ const toBlogPage = (item: any) => {
   console.log(item)
   router.push({
     path: '/blogPage',
-    query:{
-      article:aesEncrypt(item)
+    query: {
+      article: aesEncrypt(item)
     }
   })
 }
@@ -152,7 +152,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.pc{
+.pc {
   .container {
     display: flex;
     flex-direction: column;
@@ -292,7 +292,7 @@ onMounted(() => {
               }
             }
 
-            .introduce{
+            .introduce {
               height: 38px;
               color: #555666;
               line-height: 19px;
@@ -306,15 +306,15 @@ onMounted(() => {
               margin: 8px 0;
             }
 
-            .extra{
-              .time{
+            .extra {
+              .time {
                 color: #555666;
                 line-height: 20px;
                 font-size: 14px;
                 margin-right: 8px;
               }
 
-              .read{
+              .read {
                 color: #555666;
                 font-size: 14px;
               }
@@ -331,7 +331,7 @@ onMounted(() => {
   }
 }
 
-.mobile{
+.mobile {
   .container {
     display: flex;
     flex-direction: column;
@@ -387,6 +387,8 @@ onMounted(() => {
       }
 
       .classify-search {
+        width: 80%;
+        padding: .06rem 0 .2rem 0;
 
         :deep(.el-input__wrapper) {
           border: 1px solid #e2e2e2;
@@ -434,6 +436,7 @@ onMounted(() => {
             img {
               width: 1.6rem;
               height: 1rem;
+              border-radius: .04rem;
             }
           }
 
@@ -470,7 +473,7 @@ onMounted(() => {
               }
             }
 
-            .introduce{
+            .introduce {
               height: 38px;
               color: #555666;
               line-height: 19px;
@@ -484,15 +487,15 @@ onMounted(() => {
               margin: 8px 0;
             }
 
-            .extra{
-              .time{
+            .extra {
+              .time {
                 color: #555666;
                 line-height: 20px;
                 font-size: 14px;
                 margin-right: 8px;
               }
 
-              .read{
+              .read {
                 color: #555666;
                 font-size: 14px;
               }

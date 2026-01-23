@@ -488,7 +488,7 @@ onMounted(() => {
     padding-bottom: 1.8rem;
 
     .search-key {
-      margin: .4rem;
+      margin: .2rem .4rem;
 
       :deep(.el-input__wrapper) {
         border: 1px solid #64d2ff;
