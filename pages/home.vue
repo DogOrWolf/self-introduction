@@ -522,6 +522,7 @@ onMounted(() => {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+        row-gap:.08rem;
         font-size: 12px;
         margin: .08rem 0;
 
@@ -533,6 +534,7 @@ onMounted(() => {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
+          row-gap:.08rem;
 
           span {
             cursor: pointer;
@@ -552,6 +554,7 @@ onMounted(() => {
       .reset {
         position: absolute;
         right: 0.2rem;
+        top:0.2rem;
         font-size: 12px;
         cursor: pointer;
 

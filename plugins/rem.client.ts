@@ -8,9 +8,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         // 移除旧的类名（避免重复添加）
         htmlElement.classList.remove('mobile', 'pc')
 
-
         // 判断屏幕宽度并添加对应类名
-        if (window.innerWidth < mobileWidth) {
+        if (bodyWidth < mobileWidth) {
             htmlElement.classList.add('mobile')
         } else {
             htmlElement.classList.add('pc')
