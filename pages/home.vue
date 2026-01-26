@@ -46,6 +46,7 @@
               :initial-index="0"
               :scale="0.6"
               :fit="item.type == 3 ?'contain':'fill'"
+              :lazy="true"
           />
           <span class="name">{{ item.name }}</span>
           <span class="tips">{{ item.tips }}</span>

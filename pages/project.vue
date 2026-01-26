@@ -31,6 +31,7 @@
                         :scale="0.6"
                         preview-teleported
                         fit="contain"
+                        :lazy="true"
                     />
                   </el-carousel-item>
                 </el-carousel>
