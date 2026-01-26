@@ -88,56 +88,56 @@ const projectsInit = [
     name: "体育考试系统管理平台",
     tips: "针对中招体育考试实现智慧体育考场定制。",
     type: 1, //1管理平台 2网站 3小程序
-    image: "/projects/1/1.png"
+    image: "/projects/1/1-cp.png"
   },
   {
     id: 2,
     name: "样叽3.0管理平台",
     tips: "帮助用户发现好物、推荐好物的软件,帮助发现更多美好的事物。",
     type: 1, //1管理平台 2网站 3小程序
-    image: "/projects/2/1.png"
+    image: "/projects/2/1-cp.png"
   },
   {
     id: 3,
     name: "book-blog旅游网站(外文网站)",
     tips: "一款外网旅游平台网站，帮助用户选择喜欢的旅游地点。",
     type: 2, //1管理平台 2网站 3小程序
-    image: "/projects/3/1.png"
+    image: "/projects/3/1-cp.png"
   },
   {
     id: 4,
     name: "系统大屏",
     tips: "系统数据大屏，实时可视化核心数据，赋能决策高效可控。",
     type: 2, //1管理平台 2网站 3小程序
-    image: "/projects/4/1.png"
+    image: "/projects/4/1-cp.png"
   },
   {
     id: 5,
     name: "北京马术协会官网",
     tips: "赛事育人，推动马术专业化普及。",
     type: 2, //1管理平台 2网站 3小程序
-    image: "/projects/5/1.png"
+    image: "/projects/5/1-cp.png"
   },
   {
     id: 6,
     name: "上门家教小程序",
     tips: "一键预约家教，上门授课省心高效提优。",
     type: 3, //1管理平台 2网站 3小程序
-    image: "/projects/6/1.png"
+    image: "/projects/6/1-cp.png"
   },
   {
     id: 7,
     name: "花店商城小程序",
     tips: "指尖选花，同城速达，仪式感即刻送达。",
     type: 3, //1管理平台 2网站 3小程序
-    image: "/projects/7/1.png"
+    image: "/projects/7/1-cp.png"
   },
   {
     id: 8,
     name: "壳牌化工会议邀请函",
     tips: "壳牌化工行业峰会，共探产业链协同新机遇！",
     type: 3, //1管理平台 2网站 3小程序
-    image: "/projects/8/1.png"
+    image: "/projects/8/1-cp.png"
   },
 ]
 let projects = []
@@ -176,61 +176,61 @@ const loading = ref(false)
 const getPreviewList = (item: any) => {
   let obj: Record<number, string[]> = {
     1: [
-      "/projects/1/1.png",
-      "/projects/1/2.png",
-      "/projects/1/3.png",
-      "/projects/1/4.png",
-      "/projects/1/5.png",
-      "/projects/1/6.png",
-      "/projects/1/7.png",
+      "/projects/1/1-cp.png",
+      "/projects/1/2-cp.png",
+      "/projects/1/3-cp.png",
+      "/projects/1/4-cp.png",
+      "/projects/1/5-cp.png",
+      "/projects/1/6-cp.png",
+      "/projects/1/7-cp.png",
     ],
     2: [
-      "/projects/2/1.png",
-      "/projects/2/2.png",
-      "/projects/2/3.png",
-      "/projects/2/4.png",
-      "/projects/2/5.png",
-      "/projects/2/6.png",
+      "/projects/2/1-cp.png",
+      "/projects/2/2-cp.png",
+      "/projects/2/3-cp.png",
+      "/projects/2/4-cp.png",
+      "/projects/2/5-cp.png",
+      "/projects/2/6-cp.png",
     ],
     3: [
-      "/projects/3/1.png",
-      "/projects/3/2.png",
-      "/projects/3/3.png",
-      "/projects/3/4.png",
-      "/projects/3/5.png",
-      "/projects/3/6.png",
-      "/projects/3/7.png",
-      "/projects/3/8.png",
+      "/projects/3/1-cp.png",
+      "/projects/3/2-cp.png",
+      "/projects/3/3-cp.png",
+      "/projects/3/4-cp.png",
+      "/projects/3/5-cp.png",
+      "/projects/3/6-cp.png",
+      "/projects/3/7-cp.png",
+      "/projects/3/8-cp.png",
     ],
     4: [
-      "/projects/4/1.png",
-      "/projects/4/2.png",
+      "/projects/4/1-cp.png",
+      "/projects/4/2-cp.png",
     ],
     5: [
-      "/projects/5/1.png",
-      "/projects/5/2.png",
-      "/projects/5/3.png",
-      "/projects/5/4.png",
-      "/projects/5/5.png",
-      "/projects/5/6.png",
-      "/projects/5/7.png",
-      "/projects/5/8.png",
+      "/projects/5/1-cp.png",
+      "/projects/5/2-cp.png",
+      "/projects/5/3-cp.png",
+      "/projects/5/4-cp.png",
+      "/projects/5/5-cp.png",
+      "/projects/5/6-cp.png",
+      "/projects/5/7-cp.png",
+      "/projects/5/8-cp.png",
     ],
     6: [
-      "/projects/6/1.png",
-      "/projects/6/2.png",
-      "/projects/6/3.png",
+      "/projects/6/1-cp.png",
+      "/projects/6/2-cp.png",
+      "/projects/6/3-cp.png",
     ],
     7: [
-      "/projects/7/1.png",
-      "/projects/7/2.png",
-      "/projects/7/3.png",
+      "/projects/7/1-cp.png",
+      "/projects/7/2-cp.png",
+      "/projects/7/3-cp.png",
     ],
     8: [
-      "/projects/8/1.png",
-      "/projects/8/2.png",
-      "/projects/8/3.png",
-      "/projects/8/4.png",
+      "/projects/8/1-cp.png",
+      "/projects/8/2-cp.png",
+      "/projects/8/3-cp.png",
+      "/projects/8/4-cp.png",
     ]
   }
   return obj[item.id] ? obj[item.id] : [item.image]
